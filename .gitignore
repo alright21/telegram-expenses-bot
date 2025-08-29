@@ -1,3 +1,5 @@
 config.json
 creds.json
 env
+.env
+__pycache__
