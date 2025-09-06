@@ -38,6 +38,7 @@ async def scontrino(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def manuale_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if update.message.from_user.id != Config.ALLOWED_USER_ID:
+        logger.warning(f"Unauthorized access attempt by user ID {update.message.from_user.id}")
         return
     await update.message.reply_text("Inserisci il *nome* della spesa:", parse_mode="Markdown")
     return NAME
