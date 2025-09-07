@@ -49,6 +49,7 @@ The are some rules you must follow:
 - The primary_category must be one of the predefined categories.
 - When I go eating out, I want to categorize the expense as "Out", not "Groceries" or "Leisure".
 - The secondary_category can be any text, and should be more specific than the primary_category. But when I eat out, I want to use Breakfast, Lunch, Dinner, Snack, Coffee, Bar as secondary categories.
+- When I buy groceries, I want to use Supermarket as secondary category.
 """
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
