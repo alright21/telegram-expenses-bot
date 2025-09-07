@@ -23,9 +23,17 @@ def main():
     application.add_handler(CommandHandler("start", handlers.start))
     application.add_handler(CommandHandler("help", handlers.help_command))
 
-    application.add_handler(CommandHandler("scontrino", handlers.scontrino))
+    scontrino_conv_handler = ConversationHandler(
+    entry_points=[CommandHandler("scontrino", handlers.scontrino_start)],
+    states={
+        handlers.PHOTO: [MessageHandler(filters.PHOTO, handlers.scontrino_photo)],
+        handlers.CONFIRM: [CallbackQueryHandler(handlers.manuale_confirm)]
+        },
+        fallbacks=[CommandHandler("cancel", handlers.manuale_cancel)],
+    )
+    application.add_handler(scontrino_conv_handler)
 
-    conv_handler = ConversationHandler(
+    manuale_conv_handler = ConversationHandler(
         entry_points=[CommandHandler("manuale", handlers.manuale_start)],
         states={
             handlers.NAME: [MessageHandler(filters.TEXT & ~filters.COMMAND, handlers.manuale_name)],
@@ -37,7 +45,7 @@ def main():
         },
         fallbacks=[CommandHandler("cancel", handlers.manuale_cancel)],
     )
-    application.add_handler(conv_handler)
+    application.add_handler(manuale_conv_handler)
 
     application.add_handler(CommandHandler("cambia_mese", handlers.cambia_mese))
     application.add_handler(CallbackQueryHandler(handlers.cambia_mese_callback, pattern="^set_month:"))

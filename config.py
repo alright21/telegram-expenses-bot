@@ -8,6 +8,7 @@ class Config:
     SHEET_ID = os.getenv("SHEET_ID")
     ALLOWED_USER_ID = int(os.getenv("ALLOWED_USER_ID", "0"))
     LOG_FILE_PATH = os.getenv("LOG_FILE_PATH", "bot.log")
+    GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
     @classmethod
     def validate(cls):
