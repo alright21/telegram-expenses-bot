@@ -33,6 +33,7 @@ Welcome! This project is a handy Telegram bot that helps you keep track of your 
      SHEET_ID=your_google_sheet_id
      ALLOWED_USER_ID=your_telegram_user_id
      LOG_FILE_PATH=/path/to/bot.log
+     GEMINI_API_KEY=your_gemini_api_key
      ```
 
 5. **Run the bot:**
@@ -44,6 +45,6 @@ Welcome! This project is a handy Telegram bot that helps you keep track of your 
 
 - `/start` - Welcome message
 - `/help` - List available commands
-- `/scontrino` - (In development) Upload receipt photo
+- `/scontrino` - Upload receipt photo and extract expense data. It uses Gemini API
 - `/manuale` - Manually enter an expense
 - `/cambia_mese` - Change the reference month
