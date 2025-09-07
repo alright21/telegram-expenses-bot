@@ -3,5 +3,5 @@ creds.json
 env
 .env
 __pycache__
-receipts.jpg
+receipt.jpg
 bot.log
