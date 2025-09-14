@@ -6,6 +6,7 @@ import logging
 import json
 from google import genai
 from pydantic import BaseModel
+import datetime
 
 NAME, DAY, PRICE, PRIMARY_CATEGORY, SECONDARY_CATEGORY, CONFIRM = range(6)
 
@@ -73,7 +74,7 @@ async def scontrino_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def scontrino_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     photo_file = await update.message.photo[-1].get_file()
-    file_path = "./receipt.jpg"
+    file_path = "./receipts/" + datetime.datetime.now().strftime("%Y%m%d%H%M%S")+"_receipt.jpg"
     await photo_file.download_to_drive(file_path)
     await update.message.reply_text("Foto ricevuta. Elaborazione in corso...")
 
